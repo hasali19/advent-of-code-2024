@@ -37,7 +37,7 @@ fn init(day: Option<u32>) -> eyre::Result<()> {
         })
         .wrap_err("cannot determine day, please specify as argument")?;
 
-    let input_url = format!("https://adventofcode.com/2023/day/{day}/input");
+    let input_url = format!("https://adventofcode.com/2024/day/{day}/input");
     let solution_path = PathBuf::from(format!("day_{day:02}"));
     let aoc_session = env::var("AOC_SESSION").wrap_err("could not read `AOC_SESSION` cookie")?;
 
