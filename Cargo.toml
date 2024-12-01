@@ -11,8 +11,8 @@ eyre = { workspace = true }
 jiff = "0.1.15"
 ureq = { workspace = true }
 
-# [workspace]
-# members = ["day_*"]
+[workspace]
+members = ["day_*"]
 
 [workspace.dependencies]
 clap = { version = "4.5.21", features = ["derive"] }
