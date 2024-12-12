@@ -42,9 +42,6 @@ fn part_2(input: &str) -> eyre::Result<()> {
     for region in regions {
         let area = region.len();
         let sides = sides(&grid, &region);
-        println!("{region:?}");
-        println!("{area}");
-        println!("{sides}");
         cost += area * sides;
     }
 

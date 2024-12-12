@@ -1,9 +1,8 @@
-use std::env;
 use std::path::PathBuf;
 
 use clap::{Args, Parser};
 use duct::cmd;
-use eyre::{Context, ContextCompat};
+use eyre::ContextCompat;
 use jiff::Zoned;
 
 #[derive(Parser)]
@@ -37,9 +36,7 @@ fn init(day: Option<u32>) -> eyre::Result<()> {
         })
         .wrap_err("cannot determine day, please specify as argument")?;
 
-    let input_url = format!("https://adventofcode.com/2024/day/{day}/input");
     let solution_path = PathBuf::from(format!("day_{day:02}"));
-    let aoc_session = env::var("AOC_SESSION").wrap_err("could not read `AOC_SESSION` cookie")?;
 
     if !solution_path.exists() {
         cmd!("cargo", "new", &solution_path).run()?;
@@ -55,12 +52,7 @@ fn init(day: Option<u32>) -> eyre::Result<()> {
         )?;
     }
 
-    let input = ureq::get(&input_url)
-        .set("Cookie", &format!("session={aoc_session}"))
-        .call()?
-        .into_string()?;
-
-    std::fs::write(format!("day_{day:02}/input.txt"), input)?;
+    aoc2024::download_input(day, format!("day_{day:02}/input.txt"))?;
 
     Ok(())
 }
