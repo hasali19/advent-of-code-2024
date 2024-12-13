@@ -1,0 +1,17 @@
+[package]
+name = "day_13"
+version = "0.1.0"
+edition = "2024"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+aoc2024 = { path = ".." }
+eyre = { workspace = true }
+itertools = { workspace = true }
+ndarray = "0.15.2"
+ndarray-linalg = { version = "0.16.0", features = ["openblas-static"] }
+regex.workspace = true
+strum = { workspace = true }
+tap = { workspace = true }
+winnow = { workspace = true }
